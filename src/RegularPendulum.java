@@ -1,10 +1,10 @@
 /**
- * Created by Kyrie on 2018-07-11.
+ * Created by Kyrie Xia on 2018-07-11.
  */
 /**
  * Represents a pendulum
  */
-public class RegularPendulum extends AbstractEarthPendulum {
+public class RegularPendulum extends AbstractPendulum {
     private double delta, iterations = 0;
     private double dissipation;
     private double lastTheta, lastVel, lastAccel;
@@ -13,8 +13,8 @@ public class RegularPendulum extends AbstractEarthPendulum {
      * Creates a new Pendulum instance
      */
     public RegularPendulum (double inLength, double inMass, double inTheta0,
-                            double inDelta, double inDiss) {
-        super (inLength, inMass, inTheta0);
+                            double inDelta, double inDiss, GravityModel g) {
+        super (inLength, inMass, inTheta0, g);
         delta=inDelta;
         dissipation = inDiss;
         lastVel = 0;
@@ -23,8 +23,8 @@ public class RegularPendulum extends AbstractEarthPendulum {
     }
 
     public RegularPendulum (double inLength, double inMass, double inTheta0,
-                            double inDelta) {
-        this (inLength, inMass, inTheta0, inDelta, 0);
+                            double inDelta,GravityModel g) {
+        this (inLength, inMass, inTheta0, inDelta, 0, g);//refactoring
     }
 
     public void step () {
@@ -42,4 +42,3 @@ public class RegularPendulum extends AbstractEarthPendulum {
 
 
 }
-
